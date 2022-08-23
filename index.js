@@ -24,8 +24,8 @@ const managerQuestions = [
     message: "what is the manager's email address?",
   },
   {
-    type: "input",
-    name: "office",
+    type: "number",
+    name: "officeNumber",
     message: "what is the manager's office number?",
   },
 ];
@@ -89,29 +89,29 @@ const roleQuestion = [
 function makeCard(employeeInfo) {
   const role = employeeInfo.getRole();
   if (role === "Manager") {
-    return ` <div class="card mb-3" style="width: 18rem;">
+    return ` <div class="card mb-4" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-      <p class="card-text">ID:${employeeInfo.id}</p>
-      <p class="card-text">Email:<a href=mailto:${employeeInfo.email}>${employeeInfo.email}</a></p>
-      <p class="card-text">Office Number:${employeeInfo.office}</p>
+      <p class="card-text">ID: ${employeeInfo.id}</p>
+      <p class="card-text">Email: <a href=mailto:${employeeInfo.email}>${employeeInfo.email}</a></p>
+      <p class="card-text">Office Number: ${employeeInfo.officeNumber}</p>
     </div>
   </div>`;
   }
   if (role === "Engineer") {
-    return ` <div class="card mb-3" style="width: 18rem;">
+    return ` <div class="card mb-4" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-      <p class="card-text">ID:${employeeInfo.id}</p>
-      <p class="card-text">Email:<a href=mailto:${employeeInfo.email} target="_blank">${employeeInfo.email}</a></p>
-      <p class="card-text">Github:<a href=https://github.com/${employeeInfo.github}>${employeeInfo.github}</p>
+      <p class="card-text">ID: ${employeeInfo.id}</p>
+      <p class="card-text">Email: <a href=mailto:${employeeInfo.email} target="_blank">${employeeInfo.email}</a></p>
+      <p class="card-text">Github: <a href=https://github.com/${employeeInfo.github}>${employeeInfo.github}</a></p>
     </div>
   </div>`;
   }
   if (role === "Intern") {
-    return ` <div class="card mb-3" style="width: 18rem;">
+    return ` <div class="card mb-4" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
@@ -144,9 +144,10 @@ function generateHtml() {
     <h1 class="display-4" style="text-align: center">My Team</h1>
   </div>
 </div>
+<div class="row row-cols-1 row-cols-md-3">
 ${html}
 
-    
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     </body>
@@ -202,7 +203,7 @@ function init() {
       response.name,
       response.id,
       response.email,
-      response.office
+      response.officeNumber
     );
     employees.push(manager);
     createEmployee();
