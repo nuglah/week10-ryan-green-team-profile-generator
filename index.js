@@ -105,8 +105,8 @@ function makeCard(employeeInfo) {
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
       <p class="card-text">ID: ${employeeInfo.id}</p>
-      <p class="card-text">Email: <a href=mailto:${employeeInfo.email} target="_blank">${employeeInfo.email}</a></p>
-      <p class="card-text">Github: <a href=https://github.com/${employeeInfo.github}>${employeeInfo.github}</a></p>
+      <p class="card-text">Email: <a href=mailto:${employeeInfo.email}">${employeeInfo.email}</a></p>
+      <p class="card-text">Github: <a href="https://github.com/${employeeInfo.github}" target="_blank">${employeeInfo.github}</a></p>
     </div>
   </div>`;
   }
