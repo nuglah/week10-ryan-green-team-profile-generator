@@ -10,9 +10,12 @@ If you have node installed and the code from github you can run "node index.js" 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Link to a video showcasing the functionality.
 
 ![alt text](assets/images/screen1.png)
 ![alt text](assets/images/screen2.png)
+![alt text](assets/images/screen3.png)
 
 ## Tests
+
+There is a unit test for all the Employee, Engineer, Intern, and Manager in the tests directory
