@@ -6,6 +6,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const employees = [];
 
+// Questions for the inquirer on a start
 const managerQuestions = [
   {
     type: "input",
@@ -28,7 +29,7 @@ const managerQuestions = [
     message: "what is the manager's office number?",
   },
 ];
-
+// Questions if you selected engineer
 const engineerQuestions = [
   {
     type: "input",
@@ -51,7 +52,7 @@ const engineerQuestions = [
     message: "what is the engineer's github?",
   },
 ];
-
+// Questions if you selected intern
 const internQuestions = [
   {
     type: "input",
@@ -74,7 +75,7 @@ const internQuestions = [
     message: "whhere did the intern go to school?",
   },
 ];
-
+// Asks which role you want or if you wan to finish selecting
 const roleQuestion = [
   {
     type: "list",
@@ -84,11 +85,11 @@ const roleQuestion = [
     choices: ["Engineer", "Intern", "Finish"],
   },
 ];
-
+// Makes a card for the employee from the inquirer inputs
 function makeCard(employeeInfo) {
   const role = employeeInfo.getRole();
   if (role === "Manager") {
-    return ` <div class="card" style="width: 18rem;">
+    return ` <div class="card mb-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
@@ -99,7 +100,7 @@ function makeCard(employeeInfo) {
   </div>`;
   }
   if (role === "Engineer") {
-    return ` <div class="card" style="width: 18rem;">
+    return ` <div class="card mb-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
@@ -110,18 +111,19 @@ function makeCard(employeeInfo) {
   </div>`;
   }
   if (role === "Intern") {
-    return ` <div class="card" style="width: 18rem;">
+    return ` <div class="card mb-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${employeeInfo.name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-      <p class="card-text">ID:${employeeInfo.id}</p>
-      <p class="card-text">Email:<a href=mailto:${employeeInfo.email}>${employeeInfo.email}</a></p>
-      <p class="card-text">School:${employeeInfo.school}</p>
+      <p class="card-text">ID: ${employeeInfo.id}</p>
+      <p class="card-text">Email: <a href=mailto:${employeeInfo.email}>${employeeInfo.email}</a></p>
+      <p class="card-text">School :${employeeInfo.school}</p>
     </div>
   </div>`;
   }
 }
 
+// Generates all the html and insterts the cards from the makecard function
 function generateHtml() {
   let html = "";
   for (let i = 0; i < employees.length; i++) {
@@ -139,7 +141,7 @@ function generateHtml() {
     <body>
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">My Team</h1>
+    <h1 class="display-4" style="text-align: center">My Team</h1>
   </div>
 </div>
 ${html}
@@ -155,17 +157,17 @@ ${html}
   
   `;
 }
-
+// Makes an index.html file
 function writeFile(html) {
   console.log(employees);
-  const path = "./sample/index.html";
+  const path = "./dist/index.html";
 
   fs.writeFile(path, html, function (err) {
     if (err) throw err;
     console.log("Index.html generated");
   });
 }
-
+// Decides which selection of questions to use if you choose intern or engineer and ends inquirer and writes a file when finish is picked.
 function createEmployee() {
   inquirer.prompt(roleQuestion).then((response) => {
     if (response.role === "Intern") {
@@ -193,7 +195,7 @@ function createEmployee() {
     }
   });
 }
-
+// Starts the inquirer and the questions for the manager.
 function init() {
   inquirer.prompt(managerQuestions).then((response) => {
     const manager = new Manager(
